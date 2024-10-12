@@ -53,11 +53,16 @@ class ViewController: UIViewController {
             if !correoValido.evaluate(with: correo) {
                 mensaje = "No es un correo válido"
             }
+            // TODO: buscar el correo, y comparar el password
+            if let unaPersona = DataManager.shared.buscaPersona(correo: correo) {
+                if !unaPersona.password.elementsEqual(contraseña) {
+                    mensaje = "El password no coincide"
+                }
+            }
+            else { mensaje = "no existe ese correo" }
         }
         if mensaje.isEmpty {
             print( "Todo OK. hacer el login" )
-            // TODO: buscar el correo, y comparar el password
-            // ...
             // guardar la bandera de login Y navegar a HOME
             let ud = UserDefaults.standard
             ud.set("OK", forKey:Utils.LOGIN_KEY)
@@ -70,6 +75,5 @@ class ViewController: UIViewController {
             self.present(ac, animated: true)
         }
     }
-    
 }
 

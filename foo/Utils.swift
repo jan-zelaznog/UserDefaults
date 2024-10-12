@@ -10,8 +10,8 @@ import UIKit
 
 class Utils {
     // VARIABLES DE CLASE
-    
     static let LOGIN_KEY = "login"
+    static let LOGIN_FILE = "usuarios.json"
     
     ///// Dimensions
     static let SCREEN_WIDTH:CGFloat = UIScreen.main.bounds.width
